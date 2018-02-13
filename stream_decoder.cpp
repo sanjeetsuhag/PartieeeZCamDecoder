@@ -95,8 +95,8 @@ void StreamDecoder::grab_image()
     if(save_frames) fwrite(buffer, sizeof(uchar), cur_buf_size, f);
 }
 
-void StreamDecoder::record_images()
+void StreamDecoder::record_images(const char* filename)
 {
-    f = fopen("test_stream.bin", "wb");
+    f = fopen(filename, "wb");
     save_frames = true;
 }

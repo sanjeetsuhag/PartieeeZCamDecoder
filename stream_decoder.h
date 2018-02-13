@@ -26,7 +26,7 @@ private:
 public:
     StreamDecoder(const char* serverIP, int serverPort);
     void grab_image();
-    void record_images();
+    void record_images(const char* filename);
     void start_stream();
     void stop_stream();
 };

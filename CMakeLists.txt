@@ -24,20 +24,20 @@ target_link_libraries(TCP_stream_client ${OpenCV_LIBS})
 add_library(streamdecode SHARED stream_decoder.cpp)
 target_link_libraries(streamdecode ${OpenCV_LIBS})
 
-add_executable(Zcam_client ZCam_client.cpp)
-target_link_libraries(Zcam_client ${OpenCV_LIBS})
-target_link_libraries(Zcam_client streamdecode)
+add_executable(ZCam_client ZCam_client.cpp)
+target_link_libraries(ZCam_client ${OpenCV_LIBS})
+target_link_libraries(ZCam_client streamdecode)
 
 add_executable(ZCam_server_sim ZCam_server_sim.cpp)
 target_link_libraries(ZCam_server_sim ${OpenCV_LIBS})
 
-set(
-        IMGPROC_LIBRARIES
-        ${OpenCV_LIBS}
-        ${AVFORMAT_LIBRARY}
-        ${AVCODEC_LIBRARY}
-        ${AVUTIL_LIBRARY}
-)
-
-add_executable(decode_ex h264_decode_ex.cpp)
-target_link_libraries(decode_ex IMGPROC_LIBRARIES)
+#set(
+#        IMGPROC_LIBRARIES
+#        ${OpenCV_LIBS}
+#        ${AVFORMAT_LIBRARY}
+#        ${AVCODEC_LIBRARY}
+#        ${AVUTIL_LIBRARY}
+#)
+#
+#add_executable(decode_ex h264_decode_ex.cpp)
+#target_link_libraries(decode_ex IMGPROC_LIBRARIES)
