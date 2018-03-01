@@ -16,7 +16,6 @@ void reverse_array(uchar* arr, size_t len)
 
 StreamDecoder::StreamDecoder(const char* serverIP, int serverPort)
 {
-
     // tbh no clue what this statement does.
     struct sockaddr_in serverAddr;
 
@@ -35,6 +34,8 @@ StreamDecoder::StreamDecoder(const char* serverIP, int serverPort)
     {
         std::cerr << "connect() failed!" << std::endl;
     }
+
+    h264_decoder = new ffmpeg(AV_CODEC_ID_H264);
 }
 
 void StreamDecoder::start_stream()
@@ -93,6 +94,16 @@ void StreamDecoder::grab_image()
     std::clog << "Recieved size: " << cur_buf_size << std::endl;
 
     if(save_frames) fwrite(buffer, sizeof(uchar), cur_buf_size, f);
+    std::cout << "Decoding frame" << std::endl;
+    int ret = h264_decoder->decode_frame(buffer, cur_buf_size);
+
+    if(ret >= 0)
+    {
+        std::cout << "Retrieving frame" << std::endl;
+        cv::Mat img = h264_decoder->retrieve_frame();
+        std::cout << "Displaying frame" << std::endl;
+        cv::imshow("frame", img);
+    }
 }
 
 void StreamDecoder::record_images(const char* filename)

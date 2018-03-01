@@ -25,7 +25,7 @@ int main(int argc, char** argv)
     const char* filename;
 
     if (argc < 3) {
-        std::cerr << "Usage:\t./Zcam_client [-r fname] <serverIP> <serverPort>\n"
+        std::cerr << "Usage:\t./ZCam_client [-r fname] <serverIP> <serverPort>\n"
                 "[-r]:\tSpecify flag to record the stream with [-r] or [--record]. Accepts a filename afterwards.\n"
                 "serverIP:\tThe IP to connect to\n"
                 "serverPort:\tThe port to connect to\n";
